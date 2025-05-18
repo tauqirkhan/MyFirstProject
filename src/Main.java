@@ -1,22 +1,23 @@
-import java.util.Random;
+import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        // HYPOTENUSE
 
-        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
 
-        boolean isHeads;
-        double randomDouble;
+        double a;
+        double b;
+        double c;
 
-        isHeads = random.nextBoolean();
+        System.out.print("Enter the length of side A: ");
+        a = scanner.nextDouble();
 
-        randomDouble = random.nextDouble(1, 233);
+        System.out.print("Enter the length of side B: ");
+        b = scanner.nextDouble();
 
-        if(isHeads){
-            System.out.println("Heads");
-        } else{
-            System.out.println("Tails");
-        }
-        System.out.println("Random double " + randomDouble);
+        c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+        System.out.println("Hypotenuse of side with length " + a + " and " + b + " is " + c + "cm");
     }
 }
