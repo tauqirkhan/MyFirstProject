@@ -1,30 +1,62 @@
-import java.util.Scanner;
-
 public class Main{
     public static void main(String[] args) {
 
-        // circumference = 2 * Math.PI * radius;
-        // area = Math.PI * Math.pow(radius, 2)
-        // volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+        // printf() = is a method used to format output
 
-        double radius;
-        double circumference;
-        double area;
-        double volume;
+        // %[flags][width][.precision][specifier-character]
 
-        Scanner scanner = new Scanner(System.in);
+        // %[specifier-character]
 
-        System.out.print("Enter radius of circle: ");
-        radius = scanner.nextDouble();
+        String name = "Spongebob";
+        char firstLetter = 'S';
+        int age = 30;
+        double height = 45.4;
+        boolean isEmployed = true;
 
-        circumference = 2 * Math.PI * radius;
-        area = Math.PI * Math.pow(radius, 2);
-        volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+        System.out.printf("Hello %s\n", name);
+        System.out.printf("Your name starts with a %c\n", firstLetter);
+        System.out.printf("You are %d years old\n", age);
+        System.out.printf("You are %f inches tall \n", height);
+        System.out.printf("Employed %b \n", isEmployed);
 
-        System.out.printf("The circumference of a circle is: %.1fcm\n", circumference);
-        System.out.printf("The area of a circle is: %.1fcm²\n", area);
-        System.out.printf("The volume of a circle is: %.1fcm³\n", volume);
 
-        scanner.close();
+        // [.precision]
+
+        double price1 = 443300.56;
+        double price2 = -100000.3454;
+        double price3 = -230.21;
+
+        System.out.printf("[.precision] %.1f\n", price1);
+        System.out.printf("[.precision] %.2f\n", price2);
+        System.out.printf("[.precision] %.3f\n", price3);
+
+
+        // %[flags]
+
+        // + = output a plus
+        // , = comma grouping seperator
+        // ( = negative number are enclosed in ()
+        // space = display a minus if negative, space if positive
+
+        System.out.printf("[flags] % ,(.1f\n", price1);
+        System.out.printf("[flags] % ,.2f\n", price2);
+        System.out.printf("[flags] %.3f\n", price3);
+
+        // [width]
+
+        // 0 = zero padding
+        // number = right justified padding
+        // negative number = left justified padding
+
+        int id1 = 1;
+        int id2 = 23;
+        int id3 = 456;
+        int id4 = 7890;
+
+        System.out.printf("No. %-4d\n",id1);
+        System.out.printf("No. %4d\n",id2);
+        System.out.printf("No. %3d\n",id3);
+        System.out.printf("No. %2d\n", id4);
+
     }
 }
