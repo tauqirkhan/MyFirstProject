@@ -2,22 +2,29 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        // HYPOTENUSE
+
+        // circumference = 2 * Math.PI * radius;
+        // area = Math.PI * Math.pow(radius, 2)
+        // volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+
+        double radius;
+        double circumference;
+        double area;
+        double volume;
 
         Scanner scanner = new Scanner(System.in);
 
-        double a;
-        double b;
-        double c;
+        System.out.print("Enter radius of circle: ");
+        radius = scanner.nextDouble();
 
-        System.out.print("Enter the length of side A: ");
-        a = scanner.nextDouble();
+        circumference = 2 * Math.PI * radius;
+        area = Math.PI * Math.pow(radius, 2);
+        volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
 
-        System.out.print("Enter the length of side B: ");
-        b = scanner.nextDouble();
+        System.out.printf("The circumference of a circle is: %.1fcm\n", circumference);
+        System.out.printf("The area of a circle is: %.1fcm²\n", area);
+        System.out.printf("The volume of a circle is: %.1fcm³\n", volume);
 
-        c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-
-        System.out.println("Hypotenuse of side with length " + a + " and " + b + " is " + c + "cm");
+        scanner.close();
     }
 }
