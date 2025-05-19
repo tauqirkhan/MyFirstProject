@@ -1,37 +1,35 @@
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        //Weight Conversion Program
 
-        // Compound interest formula
-        // amount = p * Math.pow(1 + r / t, t * y);
-
+        int choice;
+        double weight;
+        double newWeight;
         Scanner scanner = new Scanner(System.in);
 
-        double amount;
-        double principle;
-        double rate;
-        double timesCompounded;
-        int years;
+        System.out.println("Weight Conversion Program");
+        System.out.println("Option 1: Convert lbs to kgs");
+        System.out.println("Option 2: Covert kgs to lbs");
 
-        System.out.print("Enter the principle amount: ");
-        principle = scanner.nextDouble();
+        System.out.print("Choose an option: ");
+        choice = scanner.nextInt();
 
-        System.out.print("Enter the interest rate (in %): ");
-        // In percentage
-        rate = scanner.nextDouble() / 100;
-
-        System.out.print("Enter the # times compounded per year: ");
-        timesCompounded = scanner.nextDouble();
-
-        System.out.print("Enter the # of years: ");
-        years = scanner.nextInt();
-
-        amount = principle * Math.pow(1 + rate / timesCompounded, timesCompounded * years);
-
-        System.out.printf("The amount after %d years is $%.2f", years, amount);
+        if(choice == 1){
+            System.out.print("Enter the weight in lbs: ");
+            weight = scanner.nextDouble();
+            newWeight = weight * 0.453592;
+            System.out.printf("The new weight in kgs is: %.2f kgs", newWeight);
+        } else if(choice == 2){
+            System.out.print("Enter the weight in kgs: ");
+            weight = scanner.nextDouble();
+            newWeight = weight * 2.20462;
+            System.out.printf("The new weight in lbs is: %.2f lbs", newWeight);
+        } else{
+            System.out.println("You had selected wrong option");
+        }
 
         scanner.close();
-
     }
 }
