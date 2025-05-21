@@ -3,24 +3,46 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
 
-        //Temperature Convertor
-
         Scanner scanner = new Scanner(System.in);
 
-        double temperature;
-        double newTemperature;
-        String unit;
+        double num1;
+        double num2;
+        char operator;
+        double result = 0;
+        boolean validOperation = true;
 
-        System.out.print("Enter the temperature: ");
-        temperature = scanner.nextDouble();
+        System.out.print("Enter the first number: ");
+        num1 = scanner.nextDouble();
 
-        System.out.print("Convert to Celsius or Fahrenheit? (C or F): ");
-        unit = scanner.next().toUpperCase();
+        System.out.print("Enter the operator (+, -, *, /, ^): ");
+        operator = scanner.next().charAt(0);
 
-        newTemperature = (unit.equals("C")) ? (temperature - 32) * 5 / 9 : (temperature * 9 / 5) + 32;
+        System.out.print("Enter the second number: ");
+        num2 = scanner.nextDouble();
 
-        System.out.printf("%.1f° %s", newTemperature, unit);
+        switch (operator){
+            case '+' -> result = num1 + num2;
+            case '-' -> result = num1 - num2;
+            case '*' -> result = num1 * num2;
+            case '/' -> {
+                if(num2 == 0){
+                    System.out.println("Cannot divide by zero!");
+                    validOperation = false;
+                } else {
+                    result = num1 / num2;
+                }
+            }
+            case '^' -> result = Math.pow(num1, num2);
+            default -> {
+                System.out.println("Invalid operator!");
+                validOperation = false;
+            }
+        }
 
+        if(validOperation){
+            System.out.printf("The result is %.2f", result);
+        }
         scanner.close();
+
     }
 }
