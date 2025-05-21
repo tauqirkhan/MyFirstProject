@@ -1,75 +1,86 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main{
 
-    static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
 
-    public static void main(String[] args) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-        double balance = 0;
-        boolean isRunning = true;
-        int choice;
-        boolean shownOption = true;
+         int numOfDice;
+         int total = 0;
 
-        while(isRunning){
-            if(shownOption){
-                System.out.println("***************");
-                System.out.println("BANKING PROGRAM");
-                System.out.println("***************");
-                System.out.println("1. Show Balance");
-                System.out.println("2. Deposit");
-                System.out.println("3. Withdraw");
-                System.out.println("4. Exit");
-                System.out.println("***************");
-            }
+         System.out.print("Enter the # of dice to roll: ");
+         numOfDice = scanner.nextInt();
 
-            shownOption = false;
-            System.out.print("Enter your choice (1 - 4): ");
-            choice = scanner.nextInt();
+         if(numOfDice > 0){
+             for(int i = 0; i < numOfDice; i++){
+                 int roll = random.nextInt(1, 7);
+                 printDie(roll);
+                 total += roll;
+             }
+             System.out.println("Total: " + total);
+         }
+         else{
+             System.out.println("No. of dice must be greater than 0");
+         }
 
-            switch (choice) {
-                case 1 -> showBalance(balance);
-                case 2 -> balance += deposit();
-                case 3 -> balance -= withdraw(balance);
-                case 4 -> isRunning = false;
-                default -> System.out.println("Invalid input");
-            }
-        }
-
-        System.out.println("***************************");
-        System.out.println("Thank you! Have a nice day!");
-        System.out.println("***************************");
+        scanner.close();
     }
 
-    static void showBalance(double balance){
-        System.out.println("***************************");
-        System.out.printf("Your current balance is $%.2f\n", balance);
-        System.out.println("***************************");
-    }
+    static void printDie(int roll){
+        String dice1 = """
+                 ------- 
+                |       |
+                |   ●   |
+                |       |
+                 -------
+                """;
+        String dice2 = """
+                 ------- 
+                | ●     |
+                |       |
+                |     ● |
+                 -------
+                """;
+        String dice3 = """
+                 ------- 
+                | ●     |
+                |   ●   |
+                |     ● |
+                 -------
+                """;
+        String dice4 = """
+                 ------- 
+                | ●   ● |
+                |       |
+                | ●   ● |
+                 -------
+                """;
+        String dice5 = """
+                 ------- 
+                | ●   ● |
+                |   ●   |
+                | ●   ● |
+                 -------
+                """;
+        String dice6 = """
+                 ------- 
+                | ●   ● |
+                | ●   ● |
+                | ●   ● |
+                 -------
+                """;
 
-    static double deposit(){
-        double deposit;
-
-        System.out.print("Enter the deposit amount: ");
-        deposit = scanner.nextDouble();
-
-        return deposit;
-    }
-
-    static double withdraw(double balance){
-        double amount = 0;
-
-        System.out.print("Enter the amount to be withdrawn: ");
-        amount = scanner.nextDouble();
-
-        if(amount > balance){
-            System.out.println("You cannot withdraw, greater then balance");
-            return 0;
-        } else if(amount < 0){
-            System.out.println("Withdrawn amount cannot be negative");
-            return  0;
-        } else {
-            return amount;
+        switch (roll){
+            case 1 -> System.out.println(dice1);
+            case 2 -> System.out.println(dice2);
+            case 3 -> System.out.println(dice3);
+            case 4 -> System.out.println(dice4);
+            case 5 -> System.out.println(dice5);
+            case 6 -> System.out.println(dice6);
+            default ->  System.out.println("Invalid roll");
         }
     }
 }
