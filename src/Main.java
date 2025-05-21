@@ -1,48 +1,37 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main{
     public static void main(String[] args){
+        //Number guessing game
 
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-        double num1;
-        double num2;
-        char operator;
-        double result = 0;
-        boolean validOperation = true;
+        int guess;
+        int attempts = 0;
+        int min = 0;
+        int max = 100;
+        int randomNumber = random.nextInt(min, max + 1);
 
-        System.out.print("Enter the first number: ");
-        num1 = scanner.nextDouble();
+        System.out.println("Number Guessing Game");
+        System.out.printf("Guess a number between %d-%d\n", min, max);
 
-        System.out.print("Enter the operator (+, -, *, /, ^): ");
-        operator = scanner.next().charAt(0);
+        do{
+            System.out.print("Enter a guess: ");
+            guess =  scanner.nextInt();
+            attempts++;
 
-        System.out.print("Enter the second number: ");
-        num2 = scanner.nextDouble();
-
-        switch (operator){
-            case '+' -> result = num1 + num2;
-            case '-' -> result = num1 - num2;
-            case '*' -> result = num1 * num2;
-            case '/' -> {
-                if(num2 == 0){
-                    System.out.println("Cannot divide by zero!");
-                    validOperation = false;
-                } else {
-                    result = num1 / num2;
-                }
+            if(guess < randomNumber){
+                System.out.println("TOO LOW! Try again");
+            } else if (guess > randomNumber){
+                System.out.println("TOO HIGH! Try again");
+            } else{
+                System.out.printf("Correct! The number was %d\n", guess);
+                System.out.printf("# of attempts %d\n",attempts);
             }
-            case '^' -> result = Math.pow(num1, num2);
-            default -> {
-                System.out.println("Invalid operator!");
-                validOperation = false;
-            }
-        }
+        } while(randomNumber != guess);
 
-        if(validOperation){
-            System.out.printf("The result is %.2f", result);
-        }
         scanner.close();
-
     }
 }
